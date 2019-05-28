@@ -1,14 +1,12 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.chimanos.httpsample"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -20,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -30,8 +32,12 @@ dependencies {
 
     //Retrofit qui est la librairie permettant de faire des appels réseaux
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    //Gson factory (POur serialiser avec Gson)
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    //Rx Retrofit adapter
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
     //OkHttp (Retrofit inclue déjà OKHttp mais pour plus de flexibilité on l'importe quand même)
-    implementation 'com.squareup.okhttp3:okhttp:4.0.0-alpha02'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.2'
     //Intercepteur OKHttp permettant d'afficher le log des requettes
     implementation("com.squareup.okhttp3:logging-interceptor:3.14.2")
 
